@@ -38,10 +38,16 @@ function GenerateBoardProductionCells(): Array<ProductionType>
 {
     const boardProduction = Array<ProductionType>();
     const productionCellsToUse = [...allProductionCells];
-    while (boardProduction.length < 18) {
-        var randomIndex = Math.floor(Math.random() * productionCellsToUse.length);
-        boardProduction.push(productionCellsToUse[randomIndex]);
-        productionCellsToUse.splice(randomIndex, 1);
+    var i = 0;
+    while (boardProduction.length < 19) {
+        if (i === 9) {
+            boardProduction.push(PRODUCTION_NONE);
+        } else {
+            var randomIndex = Math.floor(Math.random() * productionCellsToUse.length);
+            boardProduction.push(productionCellsToUse[randomIndex]);
+            productionCellsToUse.splice(randomIndex, 1);
+        }
+        i = i+1;
     }
 
     return boardProduction;

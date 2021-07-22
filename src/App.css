@@ -46,8 +46,15 @@
   display: flex;
 }
 
-.VillageLine {
-  display: flex;
+.VillageLineBottom {
+  margin-top: 50px;
+}
+
+.Village {
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
+  z-index: 1;
 }
 
 .DownCellLine {

@@ -1,8 +1,10 @@
-function Village(prop: {className: string}): JSX.Element
+import { CSSProperties } from "react";
+
+function Village(prop: {style?: CSSProperties}): JSX.Element
 {
-    const { className } = prop
+    const { style } = prop
     return (
-        <button className={className} />
+        <button className='Village' style={style} />
     );
 }
 
