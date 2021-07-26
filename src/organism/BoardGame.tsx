@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { ClickableItem } from "../domain/ClickableItem";
 import GenerateBoardProductionCells, { ProductionType } from "../domain/ProductionCell";
 import { initiateVillagesStatus, VillageStatus } from "../domain/VillagesStatus";
 import AvailableActions from "../molecule/AvailableActions";
@@ -8,16 +9,16 @@ function BoardGame(): JSX.Element
 {
     const [boardProductionCells, setBoardProductionCells] = useState<Array<ProductionType>>()
     const [villageStatus, setVillagesStatus] = useState<Array<VillageStatus>>(initiateVillagesStatus())
-    const [selectedVillage, setSelectedVillage] = useState<VillageStatus>()
+    const [selectedItem, setSelectedItem] = useState<ClickableItem>()
 
     return (
         <div style={{display:'flex', marginTop:'30px'}} >
             <Board 
                 productionCells={boardProductionCells}
                 villageStatusState={[villageStatus, setVillagesStatus]}
-                selectedVillageState={[selectedVillage, setSelectedVillage]}
+                selectedItemState={[selectedItem, setSelectedItem]}
             />
-            <AvailableActions selectedVillage={selectedVillage} />
+            <AvailableActions selectedVillage={selectedItem} />
             <button
                 style={{height:'30px'}}
                 onClick={() => {

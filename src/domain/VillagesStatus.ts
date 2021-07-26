@@ -1,14 +1,14 @@
-export interface VillageStatus {
-    level?: number;
-    owner?: string;
-    disabled: boolean;
+import { ClickableItem } from "./ClickableItem"
+
+export interface VillageStatus extends ClickableItem {
+    level: number;
 }
 
 export function initiateVillagesStatus()
 {
     const initialVilagesStatuses = Array<VillageStatus>()
-    while (initialVilagesStatuses.length < 55) {
-        initialVilagesStatuses.push({disabled: false})
+    for(let i=0; i < 54; i++) {
+        initialVilagesStatuses.push({disabled: false, id: i, isSelected: false, level: 0})
     }
     return initialVilagesStatuses
 }

@@ -4,29 +4,55 @@ import { ProductionType } from "../domain/ProductionCell"
 import '../App.css';
 import Village from "../atom/Village";
 import { getArroundVillagesIds, VillageStatus } from "../domain/VillagesStatus";
+import { ClickableItem } from "../domain/ClickableItem";
 
 function Board(prop:{
     productionCells?: Array<ProductionType>,
     villageStatusState: [Array<VillageStatus>, Dispatch<SetStateAction<Array<VillageStatus>>>],
-    selectedVillageState: [VillageStatus|undefined, Dispatch<SetStateAction<VillageStatus|undefined>>],
+    selectedItemState: [ClickableItem|undefined, Dispatch<SetStateAction<ClickableItem|undefined>>],
 }): JSX.Element {
-    const { productionCells, villageStatusState, selectedVillageState } = prop
+    const { productionCells, villageStatusState, selectedItemState } = prop
     const [villageStatus, setVillagesStatus] = villageStatusState
-    const [selectedVillage, setSelectedVillage] = selectedVillageState
-    function onVillageClick(id: number) {
-        var aroundVillagesIds = getArroundVillagesIds(id)
-        console.log(aroundVillagesIds)
-        var newStatuses = [...villageStatus]
-        for (var i = 0; i < aroundVillagesIds.length; i++) {
-            var villageId = aroundVillagesIds[i]
-            newStatuses[villageId] = { disabled: true }
+    const [selectedItem, setSelectedItem] = selectedItemState
+    function isInstanceOfVillage(object: ClickableItem) {
+        return 'level' in object
+    }
+
+    function resetSelected(newSelected: ClickableItem) {
+        const villages = [...villageStatus]
+        for (let i=0; i<villages.length; i++) {
+            const village = villages[i]
+            village.isSelected = false
+            villages[i] = village
         }
-        setVillagesStatus(newStatuses)
-        setSelectedVillage(newStatuses[id])
+        if(newSelected && isInstanceOfVillage(newSelected)) {
+            const village = villages[newSelected.id]
+            village.isSelected = true
+            villages[newSelected.id] = village
+        }
+        setVillagesStatus(villages)
+    }
+
+    function onVillageClick(id: number) {
+        let aroundVillagesIds = getArroundVillagesIds(id)
+        let newVillageStatuses = [...villageStatus]
+        for (let i = 0; i < aroundVillagesIds.length; i++) {
+            let villageId = aroundVillagesIds[i]
+            const village = newVillageStatuses[villageId]
+            village.disabled = true
+            newVillageStatuses[villageId] = village
+        }
+        setVillagesStatus(newVillageStatuses)
+        setSelectedItem(newVillageStatuses[id])
+        resetSelected(newVillageStatuses[id])
     }
 
     return(
         <div className="Board">
+            <div className="RoadLine">
+                <button className="Road RoadTopLeft" style={{marginLeft:'150px'}}></button>
+                <button className="Road RoadTopRight" style={{marginLeft:'30px'}}></button>
+            </div>
             <div className="CellLine">
                 <Village style={{marginLeft:'115px', marginTop:'23px'}} statuses={villageStatus} id={0} onClick={() => onVillageClick(0)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}} statuses={villageStatus} id={1} onClick={() => onVillageClick(1)} />

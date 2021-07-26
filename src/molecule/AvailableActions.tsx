@@ -1,12 +1,16 @@
 import React from "react"
-import { VillageStatus } from "../domain/VillagesStatus";
+import { ClickableItem } from "../domain/ClickableItem";
 
-function AvailableActions(prop:{selectedVillage?: VillageStatus}): JSX.Element
+function AvailableActions(prop:{selectedVillage?: ClickableItem}): JSX.Element
 {
     const { selectedVillage } = prop
     return(
         <div style={{width:'200px',height:'400px'}}>
-            {selectedVillage && <div>{selectedVillage.disabled? 'tata': 'toto'}</div>}
+            {selectedVillage && 
+            <>
+                <div>{selectedVillage.id}</div>
+                <div>{selectedVillage.isSelected ? "selected" : "nope"}</div>
+            </>}
         </div>
     );
 }

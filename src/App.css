@@ -54,7 +54,7 @@
   border-radius: 10px;
   height: 30px;
   width: 30px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .DownCellLine {
@@ -66,6 +66,29 @@
   border: 2px solid #73AD21;
   width: 130px;
   height: 130px;
+}
+
+.RoadLine {
+  height: 0px;
+  display: flex;
+}
+
+.Road {
+  z-index: 1;
+  height: 43px;
+  width: 10px;
+}
+
+.RoadTopLeft {
+  -ms-transform: skewX(-50deg);
+  -webkit-transform: skewX(-50deg);
+  transform: skewX(-50deg);
+}
+
+.RoadTopRight {
+  -ms-transform: skewX(50deg);
+  -webkit-transform: skewX(50deg);
+  transform: skewX(50deg);
 }
 
 .wool {

@@ -5,10 +5,13 @@ function Village(prop: {
     style?: CSSProperties,
     statuses: Array<VillageStatus>,
     id: number,
-    onClick: React.MouseEventHandler<HTMLButtonElement>
+    onClick: React.MouseEventHandler<HTMLButtonElement>,
 }): JSX.Element {
-    const { style, id, statuses, onClick } = prop
+    let { style, id, statuses, onClick } = prop
     const status = statuses[id]
+    if (status.isSelected) {
+        style = {...style, backgroundColor:'black'}
+    }
 
     return (
         <button
