@@ -5,6 +5,7 @@ import '../App.css';
 import Village from "../atom/Village";
 import { getArroundVillagesIds, VillageStatus } from "../domain/VillagesStatus";
 import { ClickableItem } from "../domain/ClickableItem";
+import Road from "../atom/Road";
 
 function Board(prop:{
     productionCells?: Array<ProductionType>,
@@ -50,8 +51,16 @@ function Board(prop:{
     return(
         <div className="Board">
             <div className="RoadLine">
-                <button className="Road RoadTopLeft" style={{marginLeft:'150px'}}></button>
-                <button className="Road RoadTopRight" style={{marginLeft:'30px'}}></button>
+                <Road position="RoadUpward" style={{marginLeft:'115px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
             </div>
             <div className="CellLine">
                 <Village style={{marginLeft:'115px', marginTop:'23px'}} statuses={villageStatus} id={0} onClick={() => onVillageClick(0)} />
@@ -71,7 +80,22 @@ function Board(prop:{
 
                 <Village style={{marginLeft:'-15px', marginTop:'23px'}} statuses={villageStatus} id={6} onClick={() => onVillageClick(6)} />
             </div>
-            <div className="CellLine DownCellLine">
+            <div className="RoadLine DownCellLine">
+                <Road position="RoadUpward" style={{marginLeft:'50px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'6px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'7px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+            </div>
+            <div className="CellLine">
                 <Village style={{marginLeft:'50px', marginTop:'23px'}}  statuses={villageStatus} id={7} onClick={() => onVillageClick(7)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}} statuses={villageStatus} id={8} onClick={() => onVillageClick(8)} />
 
@@ -94,7 +118,25 @@ function Board(prop:{
 
                 <Village style={{marginLeft:'-15px', marginTop:'23px'}} statuses={villageStatus} id={15} onClick={() => onVillageClick(15)} />
             </div>
-            <div className="CellLine DownCellLine">
+            <div className="RoadLine DownCellLine">
+                <Road position="RoadUpward" style={{marginLeft:'-15px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'6px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'7px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+            </div>
+            <div className="CellLine">
                 <Village style={{marginLeft:'-15px', marginTop:'23px'}} statuses={villageStatus} id={16} onClick={() => onVillageClick(16)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}} statuses={villageStatus} id={17} onClick={() => onVillageClick(17)} />
 
@@ -122,7 +164,24 @@ function Board(prop:{
 
                 <Village style={{marginLeft:'-15px', marginTop:'23px'}} statuses={villageStatus} id={26} onClick={() => onVillageClick(26)}/>
             </div>
-            <div className="CellLine DownCellLine">
+            <div className="RoadLine DownCellLine">
+                <Road position="RoadTopRight" style={{marginLeft:'15px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'6px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'7px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+            </div>
+            <div className="CellLine">
                 <Village style={{marginLeft:'-15px', marginTop:'-20px'}} statuses={villageStatus} id={27} onClick={() => onVillageClick(27)} />
                 <Village style={{marginLeft:'35px', marginTop:'23px'}}   statuses={villageStatus} id={28} onClick={() => onVillageClick(28)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}}  statuses={villageStatus} id={29} onClick={() => onVillageClick(29)} />
@@ -147,7 +206,21 @@ function Board(prop:{
                 <Village style={{marginLeft:'-15px', marginTop:'23px'}} statuses={villageStatus} id={36} onClick={() => onVillageClick(36)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}} statuses={villageStatus} id={37} onClick={() => onVillageClick(37)} />
             </div>
-            <div className="CellLine DownCellLine">
+            <div className="RoadLine DownCellLine">
+                <Road position="RoadTopRight" style={{marginLeft:'80px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'10px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'30px'}} />
+                <Road position="RoadUpward" style={{marginLeft:'5px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'5px'}} />
+            </div>
+            <div className="CellLine">
                 <Village style={{marginLeft:'50px', marginTop:'-20px'}} statuses={villageStatus} id={38} onClick={() => onVillageClick(38)} />
                 <Village style={{marginLeft:'35px', marginTop:'23px'}}  statuses={villageStatus} id={39} onClick={() => onVillageClick(39)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}} statuses={villageStatus} id={40} onClick={() => onVillageClick(40)} />
@@ -166,7 +239,7 @@ function Board(prop:{
                 <Village style={{marginLeft:'-15px', marginTop:'23px'}} statuses={villageStatus} id={45} onClick={() => onVillageClick(45)} />
                 <Village style={{marginLeft:'35px', marginTop:'-20px'}} statuses={villageStatus} id={46} onClick={() => onVillageClick(46)} />
             </div>
-            <div className="CellLine DownCellLine">
+            <div className="CellLine" style={{marginTop: '-10px'}}>
                 <Village style={{marginLeft:'115px', marginTop:'-35px'}} statuses={villageStatus} id={47} onClick={() => onVillageClick(47)} />
                 <Village style={{marginLeft:'36px', marginTop:'8px'}}    statuses={villageStatus} id={48} onClick={() => onVillageClick(48)} />
                 <Village style={{marginLeft:'36px', marginTop:'-35px'}}  statuses={villageStatus} id={49} onClick={() => onVillageClick(49)} />
@@ -174,6 +247,14 @@ function Board(prop:{
                 <Village style={{marginLeft:'37px', marginTop:'-35px'}}  statuses={villageStatus} id={51} onClick={() => onVillageClick(51)} />
                 <Village style={{marginLeft:'37px', marginTop:'8px'}}    statuses={villageStatus} id={52} onClick={() => onVillageClick(52)} />
                 <Village style={{marginLeft:'37px', marginTop:'-35px'}}  statuses={villageStatus} id={53} onClick={() => onVillageClick(53)} />
+            </div>
+            <div className="RoadLine" style={{marginTop: '-55px'}}>
+                <Road position="RoadTopRight" style={{marginLeft:'150px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'30px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'40px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'35px'}} />
+                <Road position="RoadTopRight" style={{marginLeft:'40px'}} />
+                <Road position="RoadTopLeft" style={{marginLeft:'35px'}} />
             </div>
         </div>
     )

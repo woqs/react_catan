@@ -44,6 +44,7 @@
 
 .CellLine {
   display: flex;
+  margin-top: 10px;
 }
 
 .VillageLineBottom {
@@ -58,7 +59,7 @@
 }
 
 .DownCellLine {
-  margin-top: -15px;
+  margin-top: -30px;
 }
 
 .RoundCell {
@@ -89,6 +90,11 @@
   -ms-transform: skewX(50deg);
   -webkit-transform: skewX(50deg);
   transform: skewX(50deg);
+}
+
+.RoadUpward {
+  margin-top: 55px;
+  height: 60px;
 }
 
 .wool {
