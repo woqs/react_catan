@@ -1,15 +1,15 @@
 import React from "react"
 import { ClickableItem } from "../domain/ClickableItem";
 
-function AvailableActions(prop:{selectedVillage?: ClickableItem}): JSX.Element
+function AvailableActions(prop:{selectedItem?: ClickableItem}): JSX.Element
 {
-    const { selectedVillage } = prop
+    const { selectedItem } = prop
     return(
         <div style={{width:'200px',height:'400px'}}>
-            {selectedVillage && 
+            {selectedItem &&
             <>
-                <div>{selectedVillage.id}</div>
-                <div>{selectedVillage.isSelected ? "selected" : "nope"}</div>
+                <div>{selectedItem.id}</div>
+                <div>{selectedItem.isSelected ? "selected" : "nope"}</div>
             </>}
         </div>
     );

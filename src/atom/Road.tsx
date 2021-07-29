@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { RoadStatus } from "../domain/RoadStatus";
 
 export const POSITION_TOP_LEFT = "RoadTopLeft";
 export const POSITION_TOP_RIGHT = "RoadTopRight";
@@ -9,11 +10,19 @@ type Position =
 | typeof POSITION_TOP_RIGHT
 | typeof POSITION_UPWARD
 
-function Road(prop: {position: Position, style?: CSSProperties}): JSX.Element
+function Road(prop: {
+    position: Position,
+    style?: CSSProperties,
+    onClick?: React.MouseEventHandler<HTMLButtonElement>,
+    roadStatus: RoadStatus,
+}): JSX.Element
 {
-    const { position, style } = prop
+    let { position, style, onClick, roadStatus } = prop
+    if (roadStatus.isSelected) {
+        style = {...style, backgroundColor:'black'}
+    }
     return (
-        <button className={"Road ".concat(position)} style={style}></button>
+        <button className={"Road ".concat(position)} style={style} onClick={onClick} />
     );
 }
 export default Road

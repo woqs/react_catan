@@ -12,6 +12,9 @@ function Village(prop: {
     if (status.isSelected) {
         style = {...style, backgroundColor:'black'}
     }
+    if (status.disabled) {
+        style = {...style, backgroundColor:'#d1d1d1'}
+    }
 
     return (
         <button
@@ -21,7 +24,6 @@ function Village(prop: {
             onClick={onClick}
             disabled={status.disabled}
         >
-            {id}
         </button>
     );
 }
