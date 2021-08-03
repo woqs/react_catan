@@ -1,16 +1,30 @@
-import React from "react"
+import React, { Dispatch, SetStateAction } from "react"
+import Action from "../atom/Action";
+import { isInstanceOfVillage } from "../atom/Village";
 import { ClickableItem } from "../domain/ClickableItem";
 
-function AvailableActions(prop:{selectedItem?: ClickableItem}): JSX.Element
+function AvailableActions(prop:{selectedState: [ClickableItem|undefined, Dispatch<SetStateAction<ClickableItem|undefined>>]}): JSX.Element
 {
-    const { selectedItem } = prop
+    const { selectedState } = prop
+    const [ selectedItem, setSelectedItem ] = selectedState
     return(
         <div style={{width:'200px',height:'400px'}}>
             {selectedItem &&
             <>
-                <div>{selectedItem.id}</div>
-                <div>{selectedItem.isSelected ? "selected" : "nope"}</div>
-            </>}
+                {selectedItem.owner &&
+                <div>
+                    {isInstanceOfVillage(selectedItem)}
+                    {!isInstanceOfVillage(selectedItem) && selectedItem.owner}
+                </div>
+                }
+                {!selectedItem.owner &&
+                <div>
+                    {isInstanceOfVillage(selectedItem)}
+                    {!isInstanceOfVillage(selectedItem) && <Action title="Road" resources={[]} onClick={() => {}} />}
+                </div>
+                }
+            </>
+            }
         </div>
     );
 }

@@ -1,26 +1,22 @@
 import React, { Dispatch, SetStateAction } from "react"
 import Cell from "../atom/Cell"
-import { ProductionType } from "../domain/ProductionCell"
 import '../App.css';
-import Village from "../atom/Village";
+import Village, { isInstanceOfVillage } from "../atom/Village";
 import { getArroundVillagesIds, VillageStatus } from "../domain/VillagesStatus";
 import { ClickableItem } from "../domain/ClickableItem";
 import Road from "../atom/Road";
 import { RoadStatus } from "../domain/RoadStatus";
+import { Resource } from "../domain/Resource";
 
 function Board(prop:{
-    productionCells?: Array<ProductionType>,
+    productionCells?: Array<Resource>,
     villageStatusState: [Array<VillageStatus>, Dispatch<SetStateAction<Array<VillageStatus>>>],
     roadStatusState: [Array<RoadStatus>, Dispatch<SetStateAction<Array<RoadStatus>>>],
-    selectedItemState: [ClickableItem|undefined, Dispatch<SetStateAction<ClickableItem|undefined>>],
+    selectedItemSetter: Dispatch<SetStateAction<ClickableItem|undefined>>,
 }): JSX.Element {
-    const { productionCells, villageStatusState, selectedItemState, roadStatusState } = prop
+    const { productionCells, villageStatusState, selectedItemSetter, roadStatusState } = prop
     const [villageStatus, setVillagesStatus] = villageStatusState
     const [roadStatuses, setRoadStatuses] = roadStatusState
-    const [selectedItem, setSelectedItem] = selectedItemState
-    function isInstanceOfVillage(object: ClickableItem) {
-        return 'level' in object
-    }
 
     function resetSelected(newSelected: ClickableItem) {
         const villages = [...villageStatus]
@@ -58,12 +54,12 @@ function Board(prop:{
             newVillageStatuses[villageId] = village
         }
         setVillagesStatus(newVillageStatuses)
-        setSelectedItem(newVillageStatuses[id])
+        selectedItemSetter(newVillageStatuses[id])
         resetSelected(newVillageStatuses[id])
     }
 
     function onRoadClick(id: number) {
-        setSelectedItem(roadStatuses[id])
+        selectedItemSetter(roadStatuses[id])
         resetSelected(roadStatuses[id])
     }
 

@@ -1,8 +1,8 @@
 import React from "react";
 import '../App.css';
-import { ProductionType } from "../domain/ProductionCell";
+import { Resource } from "../domain/Resource";
 
-function Cell(prop: { marginLeft?: number, production?: ProductionType }): JSX.Element
+function Cell(prop: { marginLeft?: number, production?: Resource }): JSX.Element
 {
     const { marginLeft, production } = prop;
     const marginText = marginLeft ? marginLeft.toString().concat('px')  : ""
