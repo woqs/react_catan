@@ -5,8 +5,8 @@ function Action(prop: {title: string, resources: Array<Resource>, onClick: Calla
     const { title, resources, onClick } = prop
     return (
         <div>
-            <div>{title} <button type="button" onClick={() => onClick()}>Build</button></div>
-            <div>Resources : </div>
+            <div><button style={{width:'100%'}} type="button" onClick={() => onClick()}>{title}</button></div>
+            { resources.length > 0 && <div>Resources : <br/>{resources.map((resource) => { return resource })}</div> }
         </div>
     );
 }

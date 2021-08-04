@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react"
 import Cell from "../atom/Cell"
 import '../App.css';
-import Village, { isInstanceOfVillage } from "../atom/Village";
-import { getArroundVillagesIds, VillageStatus } from "../domain/VillagesStatus";
-import { ClickableItem } from "../domain/ClickableItem";
+import Village from "../atom/Village";
+import { getArroundVillagesIds } from "../domain/VillagesStatus";
+import { ClickableItem, isInstanceOfVillage, VillageStatus } from "../domain/ClickableItem";
 import Road from "../atom/Road";
 import { RoadStatus } from "../domain/RoadStatus";
 import { Resource } from "../domain/Resource";

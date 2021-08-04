@@ -1,10 +1,5 @@
 import { CSSProperties } from "react";
-import { ClickableItem } from "../domain/ClickableItem";
-import { VillageStatus } from "../domain/VillagesStatus";
-
-export function isInstanceOfVillage(object: ClickableItem) {
-    return 'level' in object
-}
+import { VillageStatus } from "../domain/ClickableItem";
 
 function Village(prop: {
     style?: CSSProperties,

@@ -1,8 +1,4 @@
-import { ClickableItem } from "./ClickableItem"
-
-export interface VillageStatus extends ClickableItem {
-    level: number;
-}
+import { VillageStatus } from "./ClickableItem"
 
 export function initiateVillagesStatus()
 {
