@@ -39,7 +39,9 @@
 
 .Board {
   display: block;
-  margin: 50px;
+  margin: 30px;
+  padding: 20px 30px 70px;
+  background-color: lightblue;
 }
 
 .CellLine {

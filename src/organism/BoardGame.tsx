@@ -28,7 +28,7 @@ function BoardGame(): JSX.Element
                 roadStatusState={[roadStatuses, setRoadStatuses]}
                 selectedItemSetter={setSelectedItem}
             />
-            <AvailableActions selectedState={[selectedItem, setSelectedItem]} player={currentPlayer} />
+            <AvailableActions selectedState={[selectedItem, setSelectedItem]} playerState={[currentPlayer, setCurrentPlayer]} />
             <button
                 style={{height:'30px'}}
                 onClick={() => {

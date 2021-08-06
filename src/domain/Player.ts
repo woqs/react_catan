@@ -1,10 +1,13 @@
+import { Development } from "./Development"
+import { Resource } from "./Resource"
+
 export const PLAYER_RED = "player_red"
 export const PLAYER_BLUE = "player_blue"
 export const PLAYER_YELLOW = "player_yellow"
 
 export interface Player {
     color: string
-    cards?: Array<string>
+    cards?: Array<Resource|Development>
     availableRoads: number
     availableSettlements: number
     availableCities: number
@@ -25,3 +28,14 @@ function generatePlayers(numberOfPlayers: number): Array<Player> {
     return players
 }
 export default generatePlayers
+
+export function removeCardsFromPlayer(player:Player, cards: Array<Resource|Development>): Player {
+    const cardsToRemove = [...cards]
+    cardsToRemove.forEach((element) => {
+        if(player.cards) {
+            player.cards.splice(player.cards.indexOf(element),1)
+        }
+    })
+    console.log(player)
+    return player
+}
