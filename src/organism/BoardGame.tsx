@@ -21,22 +21,34 @@ function BoardGame(): JSX.Element
     const [currentPlayer, setCurrentPlayer] = useState<Player>(players[0])
 
     return (
-        <div style={{display:'flex', marginTop:'30px'}} >
-            <Board
-                productionCells={boardProductionCells}
-                villageStatusState={[villageStatus, setVillagesStatus]}
-                roadStatusState={[roadStatuses, setRoadStatuses]}
-                selectedItemSetter={setSelectedItem}
-            />
-            <AvailableActions selectedState={[selectedItem, setSelectedItem]} playerState={[currentPlayer, setCurrentPlayer]} />
-            <button
-                style={{height:'30px'}}
-                onClick={() => {
-                    setBoardProductionCells(GenerateBoardProductionCells())
-                }}
-            >
-                Populate Board
-            </button>
+        <div>
+            <div style={{display:'flex', marginTop:'30px'}} >
+                <Board
+                    productionCells={boardProductionCells}
+                    villageStatusState={[villageStatus, setVillagesStatus]}
+                    roadStatusState={[roadStatuses, setRoadStatuses]}
+                    selectedItemSetter={setSelectedItem}
+                />
+                <AvailableActions
+                    selectedState={[selectedItem, setSelectedItem]}
+                    playerState={[currentPlayer, setCurrentPlayer]}
+                    villageStatusState={[villageStatus, setVillagesStatus]}
+                    roadStatusState={[roadStatuses, setRoadStatuses]}
+                />
+                <button
+                    style={{height:'30px'}}
+                    onClick={() => {
+                        setBoardProductionCells(GenerateBoardProductionCells())
+                    }}
+                >
+                    Populate Board
+                </button>
+            </div>
+            <div>
+                Informations :<br />
+                Current Player : {currentPlayer.color}<br />
+                Cards : {currentPlayer.cards}
+            </div>
         </div>
     );
 }

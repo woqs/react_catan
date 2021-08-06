@@ -1,5 +1,5 @@
 import { Development } from "./Development"
-import { Resource } from "./Resource"
+import { BRICK, LUMBER, Resource } from "./Resource"
 
 export const PLAYER_RED = "player_red"
 export const PLAYER_BLUE = "player_blue"
@@ -23,7 +23,7 @@ const PlayerColors = [
 function generatePlayers(numberOfPlayers: number): Array<Player> {
     const players = Array<Player>()
     for (let i=0; i < numberOfPlayers; i++) {
-        players.push({availableRoads: 15, availableSettlements: 5, availableCities: 4, color: PlayerColors[i]})
+        players.push({availableRoads: 15, availableSettlements: 5, availableCities: 4, color: PlayerColors[i], cards:[BRICK, LUMBER, BRICK, LUMBER]})
     }
     return players
 }

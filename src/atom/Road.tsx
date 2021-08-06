@@ -22,7 +22,7 @@ function Road(prop: {
         style = {...style, backgroundColor:'black'}
     }
     return (
-        <button className={"Road ".concat(position)} style={style} onClick={onClick} />
+        <button className={"Road ".concat(position).concat(" "+roadStatus.owner)} style={style} onClick={onClick} />
     );
 }
 export default Road

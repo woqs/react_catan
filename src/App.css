@@ -81,19 +81,16 @@
   height: 43px;
   width: 30px;
 }
-
 .RoadTopLeft {
   -ms-transform: skewX(-50deg);
   -webkit-transform: skewX(-50deg);
   transform: skewX(-50deg);
 }
-
 .RoadTopRight {
   -ms-transform: skewX(50deg);
   -webkit-transform: skewX(50deg);
   transform: skewX(50deg);
 }
-
 .RoadUpward {
   margin-top: 55px;
   height: 60px;
@@ -102,23 +99,28 @@
 .wool {
   background-color: whitesmoke;
 }
-
 .lumber {
   background-color: #00C000;
 }
-
 .ore {
   background-color: #B0B0B0;
 }
-
 .brick {
   background-color: orangered;
 }
-
 .grain {
   background-color: wheat;
 }
-
 .desert {
   background-color: grey;
+}
+
+.player_red{
+  background-color: red;
+}
+.player_blue{
+  background-color: blue;
+}
+.player_yellow{
+  background-color: yellow;
 }
