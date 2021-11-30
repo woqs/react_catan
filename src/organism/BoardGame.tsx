@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { ClickableItem, VillageStatus } from "../domain/ClickableItem";
 import generateStartingDevelopmentCards, { Development } from "../domain/Development";
 import generatePlayers, { Player } from "../domain/Player";
@@ -8,6 +8,7 @@ import { initiateRoadStatus, RoadStatus } from "../domain/RoadStatus";
 import { initiateVillagesStatus } from "../domain/VillagesStatus";
 import AvailableActions from "../molecule/AvailableActions";
 import Board from "../molecule/Board";
+import PlayerInformationsDisplay from "../molecule/PlayerInformationsDisplay";
 
 function BoardGame(): JSX.Element
 {
@@ -19,6 +20,10 @@ function BoardGame(): JSX.Element
     const [players, setPlayers] = useState<Array<Player>>(generatePlayers(3))
     const [developmentCards, setDevelopmentCards] = useState<Array<Development>>(generateStartingDevelopmentCards())
     const [currentPlayer, setCurrentPlayer] = useState<Player>(players[0])
+
+    useEffect(() => {
+        setBoardProductionCells(GenerateBoardProductionCells())
+    }, [])
 
     return (
         <div>
@@ -35,20 +40,8 @@ function BoardGame(): JSX.Element
                     villageStatusState={[villageStatus, setVillagesStatus]}
                     roadStatusState={[roadStatuses, setRoadStatuses]}
                 />
-                <button
-                    style={{height:'30px'}}
-                    onClick={() => {
-                        setBoardProductionCells(GenerateBoardProductionCells())
-                    }}
-                >
-                    Populate Board
-                </button>
             </div>
-            <div>
-                Informations :<br />
-                Current Player : {currentPlayer.color}<br />
-                Cards : {currentPlayer.cards}
-            </div>
+            <PlayerInformationsDisplay currentPlayer={currentPlayer} />
         </div>
     );
 }

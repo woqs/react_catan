@@ -31,11 +31,11 @@ export default generatePlayers
 
 export function removeCardsFromPlayer(player:Player, cards: Array<Resource|Development>): Player {
     const cardsToRemove = [...cards]
+    const toReturnPlayer = { ...player }
     cardsToRemove.forEach((element) => {
-        if(player.cards) {
-            player.cards.splice(player.cards.indexOf(element),1)
+        if(toReturnPlayer.cards) {
+            toReturnPlayer.cards.splice(toReturnPlayer.cards.indexOf(element),1)
         }
     })
-    console.log(player)
-    return player
+    return toReturnPlayer
 }

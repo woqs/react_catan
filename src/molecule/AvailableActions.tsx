@@ -13,7 +13,7 @@ function AvailableActions(prop:{
 }): JSX.Element {
     const { selectedState, playerState, villageStatusState, roadStatusState } = prop
     const [ selectedItem, setSelectedItem ] = selectedState
-    let [ player, setPlayer ] = playerState
+    const [ player, setPlayer ] = playerState
     const [villageStatus, setVillagesStatus] = villageStatusState
     const [roadStatuses, setRoadStatuses] = roadStatusState
 
@@ -28,9 +28,9 @@ function AvailableActions(prop:{
                 <Action title="Player Trade" resources={[]} onClick={() => {}} />
                 <Action title="Default Trade" resources={[]} onClick={() => {}} />
                 <Action title="Development" resources={NEEDED_RESOURCES_DEVELOPMENT} disabled={isDisabledDevelopmentPurchase} onClick={() => {
-                    player = removeCardsFromPlayer(player, NEEDED_RESOURCES_DEVELOPMENT)
-                    setIsDisabledDevPurchase(!hasPlayerEnoughResourcesFor(player, NEEDED_RESOURCES_DEVELOPMENT))
-                    setPlayer(player)
+                    const toUpdatePlayer = removeCardsFromPlayer(player, NEEDED_RESOURCES_DEVELOPMENT)
+                    setIsDisabledDevPurchase(!hasPlayerEnoughResourcesFor(toUpdatePlayer, NEEDED_RESOURCES_DEVELOPMENT))
+                    setPlayer(toUpdatePlayer)
                 }} />
             </div>
             {selectedItem &&
@@ -45,9 +45,9 @@ function AvailableActions(prop:{
                             const updatedVillageStatus = [...villageStatus]
                             updatedVillageStatus[item.id] = item
                             setVillagesStatus(updatedVillageStatus)
-                            player = removeCardsFromPlayer(player, NEEDED_RESOURCES_CITY)
-                            setIsDisabledCityPurchase(!hasPlayerEnoughResourcesFor(player, NEEDED_RESOURCES_CITY))
-                            setPlayer(player)
+                            const toUpdatePlayer = removeCardsFromPlayer(player, NEEDED_RESOURCES_CITY)
+                            setIsDisabledCityPurchase(!hasPlayerEnoughResourcesFor(toUpdatePlayer, NEEDED_RESOURCES_CITY))
+                            setPlayer(toUpdatePlayer)
                         }} />
                     }
                     {!isInstanceOfVillage(selectedItem) && selectedItem.owner}
@@ -64,9 +64,9 @@ function AvailableActions(prop:{
                         const updatedVillageStatus = [...villageStatus]
                         updatedVillageStatus[item.id] = item
                         setVillagesStatus(updatedVillageStatus)
-                        player = removeCardsFromPlayer(player, NEEDED_RESOURCES_SETTLEMENT)
-                        setIsDisabledSettlePurchase(!hasPlayerEnoughResourcesFor(player, NEEDED_RESOURCES_SETTLEMENT))
-                        setPlayer(player)
+                        const toUpdatePlayer = removeCardsFromPlayer(player, NEEDED_RESOURCES_SETTLEMENT)
+                        setIsDisabledSettlePurchase(!hasPlayerEnoughResourcesFor(toUpdatePlayer, NEEDED_RESOURCES_SETTLEMENT))
+                        setPlayer(toUpdatePlayer)
                     }} />
                     }
                     {!isInstanceOfVillage(selectedItem) &&
@@ -77,9 +77,9 @@ function AvailableActions(prop:{
                         const updatedRoadStatuses = [...roadStatuses]
                         updatedRoadStatuses[item.id] = item
                         setRoadStatuses(updatedRoadStatuses)
-                        player = removeCardsFromPlayer(player, NEEDED_RESOURCES_ROAD)
-                        setIsDisabledRoadPurchase(!hasPlayerEnoughResourcesFor(player, NEEDED_RESOURCES_ROAD))
-                        setPlayer(player)
+                        const toUpdatePlayer = removeCardsFromPlayer(player, NEEDED_RESOURCES_ROAD)
+                        setIsDisabledRoadPurchase(!hasPlayerEnoughResourcesFor(toUpdatePlayer, NEEDED_RESOURCES_ROAD))
+                        setPlayer(toUpdatePlayer)
                     }} />
                     }
                 </div>
